@@ -1,0 +1,16 @@
+{
+    "home": {
+        "master": {
+            "locals": "",
+            "header": {
+                "locals": ""
+            },
+            "about": {
+                "locals": ""
+            },
+            "footer": {
+                "locals": ""
+            }
+        }
+    }
+}

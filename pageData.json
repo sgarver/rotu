@@ -1,0 +1,27 @@
+
+{
+    "home": {
+        "locals": {
+            "pageTitle": "Welcome Stranger",
+            "youAreUsingJade": true
+        }
+    },
+    "about": {
+        "locals": {
+            "pageTitle": "Welcome Stranger",
+            "youAreUsingJade": true
+        }
+    },
+    "contact": {
+        "locals": {
+            "pageTitle": "Welcome Stranger",
+            "youAreUsingJade": true
+        }
+    },
+    "user": {
+        "locals": {
+            "pageTitle": "Welcome Stranger",
+            "youAreUsingJade": true
+        }
+    }
+}
