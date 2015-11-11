@@ -23,13 +23,19 @@ const server = http.createServer(function (request, response) {
 
         try {
 
-            template = jade.compileFile('./pages' + routed + '.jade');
+            template = jade.compileFile('./pages' + routed + '.jade', { "pretty": true });
             html = template(data[path.basename(routed)].locals);
 
-        } catch (e) {
+        } catch(e) {
 
             response.writeHead(200, {"Content-Type": "text/html"});
-            response.end('The ' + routed + ' template was not found.');
+
+            if (e.errno === 34) {
+                response.end('The page ' + routed + ' was not found.');
+            } else {
+                response.end('There was a problem processing template: ' + routed);
+                console.log(e);
+            }
 
         } finally {
 
