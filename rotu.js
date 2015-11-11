@@ -7,7 +7,7 @@ module.exports = function (routed) {
     var routed = path.normalize(url.parse(routed).pathname);
 
     if (routed[routed.length - 1] === '/') {
-        routed += "index"
+        routed += "index";
     }
 
     return routed;
