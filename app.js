@@ -1,20 +1,20 @@
 
-const fs = require('fs');
 const http = require('http');
-const url = require('url');
+const path = require('path');
 const jade = require('jade');
 
-const pageData = require('./pageData.json');
+const rotu = require('./rotu');
+const data = require('./data.json');
 
 const server = http.createServer(function (request, response) {
 
-    var path = url.parse(request.url).pathname;
-    var options = {};
-    var html = '';
+    var html = "";
+    var template = "";
+    var routed = rotu(request.url);
 
-    response.writeHead(200, {"Content-Type": "text/html"});
+    console.log('rotu -> ' + routed);
 
-    if (path === '/favicon.ico') {
+    if (routed === '/favicon.ico') {
 
         response.writeHead(200, {'Content-Type': 'image/x-icon'} );
         response.end();
@@ -23,23 +23,18 @@ const server = http.createServer(function (request, response) {
 
         try {
 
-            if (path[path.length - 1] === '/') {
-                path += "home"
-            }
-
-            const template = jade.compileFile('./pages' + path + '.jade', options);
-            html = template(pageData[path.replace(/\//g, '')].locals);
+            template = jade.compileFile('./pages' + routed + '.jade');
+            html = template(data[path.basename(routed)].locals);
 
         } catch (e) {
 
-            html = "404 File Not Found"
-            console.log(e);
+            response.writeHead(200, {"Content-Type": "text/html"});
+            response.end('The ' + routed + ' template was not found.');
 
         } finally {
 
             response.writeHead(200, {"Content-Type": "text/html"});
             response.end(html);
-            console.log('page served');
 
         }
     }
@@ -47,4 +42,3 @@ const server = http.createServer(function (request, response) {
 
 server.listen(8000);
 console.log("Server running on port 8000");
-

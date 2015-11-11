@@ -1,6 +1,6 @@
 
 {
-    "home": {
+    "index": {
         "locals": {
             "pageTitle": "Welcome Stranger",
             "youAreUsingJade": true
