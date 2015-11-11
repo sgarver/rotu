@@ -1,3 +1,2 @@
 # rotu
-minimal page routing for nodejs
-
+minimal node page routing for jade templates
