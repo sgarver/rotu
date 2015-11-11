@@ -2,7 +2,7 @@
 const path = require('path');
 const url = require('url');
 
-module.exports = function (routed) {
+module.exports = function(routed) {
 
     var routed = path.normalize(url.parse(routed).pathname);
 
