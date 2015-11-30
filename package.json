@@ -1,10 +1,10 @@
 {
   "name": "rotu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "minimal page routing for nodejs",
   "repository": {
-    "type": "git", 
-    "url": "git://github.com/sgarver/rotu" 
+    "type": "git",
+    "url": "git://github.com/sgarver/rotu"
   },
   "bin": "rotu.js",
   "dependencies": {
