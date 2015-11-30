@@ -1,8 +1,12 @@
 {
   "name": "rotu",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "minimal page routing for nodejs",
-  "main": "app.js",
+  "repository": {
+    "type": "git", 
+    "url": "git://github.com/sgarver/rotu" 
+  },
+  "bin": "rotu.js",
   "dependencies": {
     "jade": "~1.11.0"
   },
@@ -12,9 +16,9 @@
   },
   "keywords": [
     "routing",
-    "nodejs",
+    "jade",
     "minimal"
   ],
-  "author": "sgarver",
-  "license": "BSD"
+  "author": "sgarver <sgarver@protonmail.ch>",
+  "license": "MIT"
 }
