@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git://github.com/sgarver/rotu"
   },
-  "bin": "rotu.js",
+  "main": "rotu.js",
   "dependencies": {
     "jade": "~1.11.0"
   },
