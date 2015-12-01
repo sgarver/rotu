@@ -1,6 +1,6 @@
 {
   "name": "rotu",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "minimal page routing for nodejs",
   "repository": {
     "type": "git",
