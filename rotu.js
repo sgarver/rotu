@@ -1,9 +1,8 @@
-
 const path = require('path');
 const url = require('url');
 const jade = require('jade');
 
-module.exports = function(route, data, options, err) {
+module.exports = function(root, route, data, options, err) {
 
     try {
 
