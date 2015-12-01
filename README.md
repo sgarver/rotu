@@ -17,11 +17,11 @@ server.listen(8000);
 
 # installation
 ```bash
-npm install rotu
+$ npm install rotu
 ```
 # status
-**alpha**
+**<span style="color: crimson;">alpha</span>**
 
 **rotu** is currently alpha, undergoing many changes and is not yet production ready
 
-use at your own risk
+<span style="color: crimson;">use at your own risk</span>
