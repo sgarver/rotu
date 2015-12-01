@@ -2,11 +2,11 @@ const path = require('path');
 const url = require('url');
 const jade = require('jade');
 
-module.exports = function(root, route, data, options, err) {
+module.exports = function(route, root, data, options, err) {
 
     try {
 
-        root = root || '';
+        root = root || '.';
         options = options || {};
 
         var routed = path.normalize(url.parse(route).pathname);
