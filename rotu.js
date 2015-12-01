@@ -7,6 +7,7 @@ module.exports = function(route, data, options, err) {
 
     try {
 
+        root = root || '';
         options = options || {};
 
         var routed = path.normalize(url.parse(route).pathname);
@@ -16,7 +17,7 @@ module.exports = function(route, data, options, err) {
         }
 
         const filename = path.basename(routed);
-        const template = jade.compileFile('./pages' + routed + '.jade', options);
+        const template = jade.compileFile(root + routed + '.jade', options);
 
         return template(data[filename].locals);
 
