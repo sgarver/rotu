@@ -18,7 +18,11 @@ module.exports = function(route, root, data, options, err) {
         const filename = path.basename(routed);
         const template = jade.compileFile(root + routed + '.jade', options);
 
-        return template(data[filename].locals);
+        if (data) {
+            return template(data[filename].locals);
+        } else {
+            return template();
+        }
 
     } catch(e) {
         typeof err === 'function' && err(e);
