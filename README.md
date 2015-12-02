@@ -21,20 +21,20 @@ $ npm install rotu
 ```
 
 # options
-**rotu**(**route**, [root, data, options, err]) **html** | string |
+**rotu**(**route**[, root, data, options, err]) **html** | string |
 
 **route** | string | _required_  
 The url returned from the http.createServer() request object.
 
 ```javascript
-rotu(req.url)
+rotu(req.url);
 ```
 
 **root** | string | _optional_  
 The root path used to override the default which is the _current working directory_.
 
 ```javascript
-rotu(req.url, './pages')
+rotu(req.url, './pages');
 ```
 
 **data** | json | _optional_  
@@ -70,13 +70,13 @@ var html = rotu(req.url, './pages', data, {"pretty": true});
 Callback function to execute if exceptions are thrown during routing or template compilation.
 
 ```javascript
-var html = rotu(req.url, './pages', data, {"pretty": true}, function(e) {
+var html = rotu(req.url, './pages', data, {"pretty": true}, function(ex) {
 
-    if (e.errno === 34) {
+    if (ex.errno === 34) {
         response.end('This page was not found.');
     } else {
         response.end('There was a problem processing your template');
-        console.log(e);
+        console.log(ex);
     }
 });
 ```
@@ -87,5 +87,5 @@ var html = rotu(req.url, './pages', data, {"pretty": true}, function(e) {
 # status
 **alpha**
 
-**rotu** is currently alpha and undergoing many changes.  
-Use at your own risk.
+**rotu** is currently alpha and will be undergoing many changes.  
+Update at your own risk.
