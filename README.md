@@ -63,14 +63,14 @@ rotu(req.url, './pages', data);
 Standard jade configuration object.
 
 ```javascript
-var html = rotu(request.url, './pages', data, {"pretty": true});
+var html = rotu(req.url, './pages', data, {"pretty": true});
 ```
 
 **err**(exception) | function | _optional_  
 Callback function to execute if exceptions are thrown during routing or template compilation.
 
 ```javascript
-var html = rotu(request.url, './pages', data, {"pretty": true}, function(e) {
+var html = rotu(req.url, './pages', data, {"pretty": true}, function(e) {
 
     if (e.errno === 34) {
         response.end('This page was not found.');
