@@ -1,5 +1,5 @@
 
-# [![rotu - minimal page routing for jade](./rotu.svg)](https://www.npmjs.com/package/rotu)
+# [![rotu - minimal page routing for jade](https://github.com/sgarver/rotu/blob/master/rotu.svg)](https://www.npmjs.com/package/rotu)
 _minimal page routing for jade_
 
 ```javascript
