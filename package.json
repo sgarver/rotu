@@ -1,7 +1,7 @@
 {
   "name": "rotu",
   "version": "1.0.6",
-  "description": "minimal page routing for nodejs",
+  "description": "minimal page routing for jade",
   "repository": {
     "type": "git",
     "url": "git://github.com/sgarver/rotu"
