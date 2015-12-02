@@ -1,6 +1,6 @@
 {
   "name": "rotu",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "minimal page routing for jade",
   "repository": {
     "type": "git",
