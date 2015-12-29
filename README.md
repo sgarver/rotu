@@ -1,12 +1,13 @@
 
-# [![rotu - minimal page routing for jade](./rotu.png)](https://www.npmjs.com/package/rotu)
-_minimal page routing for jade_
+# [![rotu](./rotu.png)](https://www.npmjs.com/package/rotu)  
+**v1.1.0**
 
+_micro page routing for jade_
 ```javascript
-const http = require('http');
-const rotu = require('rotu');
+var http = require("http");
+var rotu = require("rotu");
 
-const server = http.createServer(function (req, res) {
+var server = http.createServer(function (req, res) {
 
     res.writeHead(200, {"Content-Type": "text/html"});
     res.end(rotu(req.url));
@@ -20,24 +21,41 @@ server.listen(8000);
 $ npm install rotu
 ```
 
-# options
-**rotu**(**route**[, root, data, options, err]) **html** | string |
+# configuration
+<!-- **rotu**(**route**[, root, data, options, err]) **html** | string | -->
 
-**route** | string | _required_  
+**rotu.config** | options object with default values  
+```javascript
+{
+    "route": "/",
+    "routed": null,
+    "root": ".",
+    "data": null,
+    "options": {
+        "pretty": true
+    },
+    "error": null
+}
+```
+
+
+
+
+rotu.config.**route** | _string_  
 The url returned from the http.createServer() request object.
 
 ```javascript
 rotu(req.url);
 ```
 
-**root** | string | _optional_  
+rotu.config.**root** | _string_  
 The root path used to override the default which is the _current working directory_.
 
 ```javascript
-rotu(req.url, './pages');
+rotu(req.url, "./pages");
 ```
 
-**data** | json | _optional_  
+rotu.config.**data** | _json_  
 The first child of data must be the jade **template name** (without the .jade extension). This object requires an additional child object named **locals** which contains the data to be bound to the jade template.
 
 ```javascript
@@ -56,26 +74,26 @@ var data = {
     }
 };
 
-rotu(req.url, './pages', data);
+rotu(req.url, "./pages", data);
 ```
 
-**options** | json | _optional_  
+rotu.config.**options** | _json_  
 Standard jade configuration object.
 
 ```javascript
-var html = rotu(req.url, './pages', data, {"pretty": true});
+var html = rotu(req.url, "./pages", data, {"pretty": true});
 ```
 
-**err**(exception) | function | _optional_  
-Callback function to execute if exceptions are thrown during routing or template compilation.
+rotu.config.**error**(exception) | _callback method_  
+Callback method called if an exception is thrown during routing or template compilation.
 
 ```javascript
-var html = rotu(req.url, './pages', data, {"pretty": true}, function(ex) {
+var html = rotu(req.url, "./pages", data, {"pretty": true}, function(ex) {
 
     if (ex.errno === 34) {
-        response.end('This page was not found.');
+        response.end("This page was not found.");
     } else {
-        response.end('There was a problem processing your template');
+        response.end("There was a problem processing your template");
         console.log(ex);
     }
 });

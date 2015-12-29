@@ -1,30 +1,49 @@
-const path = require('path');
-const url = require('url');
-const jade = require('jade');
+var path = require("path");
+var url = require("url");
+var jade = require("jade");
 
-module.exports = function(route, root, data, options, err) {
+module.exports = (function() {
 
-    try {
+    return {
+        "config": {
+            "route": "/",
+            "routed": null,
+            "root": ".",
+            "data": null,
+            "options": {"pretty": true},
+            "error": null
+        },
+        "getRouted": function() {
 
-        root = root || '.';
-        options = options || {};
+            this.routed = path.normalize(url.parse(this.config.route).pathname);
 
-        var routed = path.normalize(url.parse(route).pathname);
+            var endpoint = this.routed[this.routed.length - 1];
+            console.log("rotu >>> " + this.routed);
 
-        if (routed[routed.length - 1] === '/') {
-            routed += "index";
+            if (endpoint === "/" || endpoint === "\\") {
+                this.routed += "index";
+            }
+
+            return this.routed;
+        },
+        "getHtml": function() {
+
+            try {
+
+                this.getRouted();
+
+                var filename = path.basename(this.routed);
+                var template = jade.compileFile(this.config.root + this.routed + ".jade", this.config.options);
+
+                if (this.config.data) {
+                    return template(this.config.data[filename].locals);
+                } else {
+                    return template();
+                }
+
+            } catch (ex) {
+                typeof this.config.error === "function" && this.config.error(ex);
+            }
         }
-
-        const filename = path.basename(routed);
-        const template = jade.compileFile(root + routed + '.jade', options);
-
-        if (data) {
-            return template(data[filename].locals);
-        } else {
-            return template();
-        }
-
-    } catch(e) {
-        typeof err === 'function' && err(e);
-    }
-};
+    };
+})();
