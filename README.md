@@ -19,7 +19,7 @@ server.listen(8000);
 
 The above _micro_ [Node.js&reg;](https://nodejs.org) application will respond to the request for [http://localhost:8000](http://localhost:8000) by looking in the current directory for a jade template named index.jade, compile the template and then serve the resultant html.
 
-rotu can also route to named templates directly:
+rotu will also route directly to named templates:
 
 [http://localhost:8000/home](http://localhost:8000/home)  
 routes to the **./home.jade** template
