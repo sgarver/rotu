@@ -13,7 +13,7 @@ module.exports = (function() {
             "options": {"pretty": true},
             "error": null
         },
-        "getRouted": function() {
+        "route": function() {
 
             this.routed = path.normalize(url.parse(this.config.route).pathname);
 
@@ -26,11 +26,11 @@ module.exports = (function() {
 
             return this.routed;
         },
-        "getHtml": function() {
+        "html": function() {
 
             try {
 
-                this.getRouted();
+                this.route();
 
                 var filename = path.basename(this.routed);
                 var template = jade.compileFile(this.config.root + this.routed + ".jade", this.config.options);

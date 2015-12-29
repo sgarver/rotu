@@ -1,8 +1,8 @@
 
 # [![rotu](./rotu.png)](https://www.npmjs.com/package/rotu)  
+_Micro page routing for [JADE](http://jade-lang.com)_  
 **v1.1.0**
 
-_micro page routing for jade_
 ```javascript
 var http = require("http");
 var rotu = require("rotu");
@@ -10,11 +10,24 @@ var rotu = require("rotu");
 var server = http.createServer(function (req, res) {
 
     res.writeHead(200, {"Content-Type": "text/html"});
-    res.end(rotu(req.url));
+    res.end(rotu.html());
 });
 
 server.listen(8000);
 ```
+
+The above _micro_ [Node.js&reg;](https://nodejs.org) application will respond to the request for http://localhost:8000 by looking in the current working directory for a jade template named index.jade, compile the template and then serve the resultant html.
+
+rotu can also route to named templates directly:
+
+http://localhost:8000/home  
+routes to the **./home.jade** template
+
+http://localhost:8000/home/   
+routes to the **./home/index.jade** template
+
+http://localhost:8000/home/blog  
+routes to the **./home/blog.jade** template
 
 # installation
 ```bash
@@ -22,9 +35,9 @@ $ npm install rotu
 ```
 
 # configuration
-<!-- **rotu**(**route**[, root, data, options, err]) **html** | string | -->
 
-**rotu.config** | options object with default values  
+rotu.**config** | _object_  
+An options object with following default values:  
 ```javascript
 {
     "route": "/",
@@ -45,50 +58,51 @@ rotu.config.**route** | _string_
 The url returned from the http.createServer() request object.
 
 ```javascript
-rotu(req.url);
+rotu.config.route = req.url;
 ```
 
 rotu.config.**root** | _string_  
 The root path used to override the default which is the _current working directory_.
 
 ```javascript
-rotu(req.url, "./pages");
+rotu.config.root = "./pages";
 ```
 
 rotu.config.**data** | _json_  
-The first child of data must be the jade **template name** (without the .jade extension). This object requires an additional child object named **locals** which contains the data to be bound to the jade template.
+The first child of data must be the jade _template name_ (without the .jade extension). This object requires an additional child object named _locals_ containing the data to be bound in the jade template.
 
 ```javascript
-var data = {
+rotu.config.data = {
     "index": {
         "locals": {
-            "pageTitle": "Welcome to Rotu",
-            "youAreUsingJade": true
+            "pageTitle": "Welcome to this Website",
+            "youAreUsingJade": true,
+            "youAreUsingRotu": true
         }
     },
     "about": {
         "locals": {
-            "pageTitle": "About Rotu",
-            "youAreUsingJade": true
+            "pageTitle": "About Rotu"
         }
     }
 };
-
-rotu(req.url, "./pages", data);
 ```
 
-rotu.config.**options** | _json_  
-Standard jade configuration object.
+rotu.config.**options** | _object_  
+The standard jade configuration object.  
+ref: http://jade-lang.com/api/
 
 ```javascript
-var html = rotu(req.url, "./pages", data, {"pretty": true});
+rotu.config.options = {
+    "pretty": true,
+    "debug": true
+};
 ```
-
 rotu.config.**error**(exception) | _callback method_  
-Callback method called if an exception is thrown during routing or template compilation.
+A callback method that gets called if an exception is thrown during routing or template compilation.
 
 ```javascript
-var html = rotu(req.url, "./pages", data, {"pretty": true}, function(ex) {
+rotu.config.error = function(ex) {
 
     if (ex.errno === 34) {
         response.end("This page was not found.");
@@ -96,7 +110,7 @@ var html = rotu(req.url, "./pages", data, {"pretty": true}, function(ex) {
         response.end("There was a problem processing your template");
         console.log(ex);
     }
-});
+};
 ```
 
 
@@ -105,5 +119,4 @@ var html = rotu(req.url, "./pages", data, {"pretty": true}, function(ex) {
 # status
 **alpha**
 
-**rotu** is currently alpha and will be undergoing many changes.  
-Update at your own risk.
+During alpha rotu will be undergoing frequent changes. Updates may contain breaking changes until rotu's status has been elevated to _beta_.
