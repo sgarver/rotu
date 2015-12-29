@@ -104,13 +104,8 @@ A callback method that gets called if an exception is thrown during routing or t
 
 ```javascript
 rotu.config.error = function(ex) {
-
-    if (ex.errno === 34) {
-        response.end("This page was not found.");
-    } else {
-        response.end("There was a problem processing your template");
-        console.log(ex);
-    }
+    response.end("There was a problem processing your template");
+    console.log(ex);
 };
 ```
 
