@@ -2,7 +2,7 @@
 # [![rotu](./rotu.png)](https://www.npmjs.com/package/rotu)  
 _micro page routing for [JADE](http://jade-lang.com)_
 
-**v1.1.2**
+**v1.1.3**
 
 ```javascript
 var http = require("http");
@@ -16,6 +16,8 @@ var server = http.createServer(function (req, res) {
 
 server.listen(8000);
 ```
+
+See [rotu boilerplate](https://github.com/sgarver/rotu-boilerplate) for example project.
 
 The above _micro_ [Node.js&reg;](https://nodejs.org) application will respond to the request for [http://localhost:8000](http://localhost:8000) by looking in the current directory for a jade template named index.jade, compile the template and then serve the resultant html.
 
