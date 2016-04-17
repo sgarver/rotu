@@ -2,7 +2,7 @@
 # [![rotu](./rotu.png)](https://www.npmjs.com/package/rotu)  
 _micro page routing for [JADE](http://jade-lang.com)_
 
-**v1.1.3**
+**v1.1.4**
 
 ```javascript
 var http = require("http");
@@ -117,4 +117,4 @@ rotu.config.error = function(ex) {
 # status
 **beta**
 
-During alpha rotu will be undergoing frequent changes. Updates may contain breaking changes until rotu's status has been elevated to _beta_.
+During beta rotu will be undergoing frequent changes. Updates may contain breaking changes until rotu's status has been elevated.
