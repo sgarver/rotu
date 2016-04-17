@@ -115,6 +115,6 @@ rotu.config.error = function(ex) {
 
 
 # status
-**alpha**
+**beta**
 
 During alpha rotu will be undergoing frequent changes. Updates may contain breaking changes until rotu's status has been elevated to _beta_.
