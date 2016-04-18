@@ -1,6 +1,6 @@
 {
   "name": "rotu",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "micro page routing for jade",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
   },
   "main": "rotu.js",
   "dependencies": {
-    "jade": "~1.11.0"
+    "jade": "1.11.0"
   },
   "devDependencies": {},
   "scripts": {
@@ -20,5 +20,5 @@
     "minimal"
   ],
   "author": "sgarver <sgarver@protonmail.ch>",
-  "license": "CC-BY-ND-4.0"
+  "license": "CC0-1.0"
 }

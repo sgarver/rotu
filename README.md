@@ -2,7 +2,7 @@
 # [![rotu](./rotu.png)](https://www.npmjs.com/package/rotu)  
 _micro page routing for [JADE](http://jade-lang.com)_
 
-**v1.1.5**
+**v1.1.6**
 
 ```javascript
 
@@ -59,9 +59,6 @@ An _optional_ configuration object that can be passed as an argument to the rotu
 }
 ```
 
-
-
-
 config.**route** | _string_  
 The url returned from the http.createServer() request object.
 
@@ -115,9 +112,6 @@ config.error = function(ex) {
     console.log(ex);
 };
 ```
-
-
-
 
 # status
 **beta**
