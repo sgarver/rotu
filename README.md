@@ -2,7 +2,7 @@
 # [![rotu](./rotu.png)](https://www.npmjs.com/package/rotu)  
 _micro page routing for [JADE](http://jade-lang.com)_
 
-**v1.1.4**
+**v1.1.5**
 
 ```javascript
 

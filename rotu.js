@@ -20,7 +20,6 @@ module.exports = class rotu {
         };
 
         if (config) {
-            console.log("config is defined?");
             Object.assign(this.config, config);
         }
     }
