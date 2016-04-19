@@ -2,8 +2,7 @@
 # [![rotu](./rotu.png)](https://www.npmjs.com/package/rotu)  
 _micro page routing for [JADE](http://jade-lang.com)_
 
-**v1.1.7**
-
+**v1.1.8**
 
 By default rotu will serve jade templates from the current working directory. By over-writing the config.route property rotu will route from url's directly to named templates.  
 
@@ -60,10 +59,10 @@ routes to the **./home/blog.jade** template
 
 See [rotu boilerplate](https://github.com/sgarver/rotu-boilerplate) for an example starter project.
 
-# configuration
+# Configuration
 
-let r = new rotu(**config**) | _object_  
-A **_completely optional_** configuration object that can be passed as an argument to the rotu constructor with following default values:  
+var r = new rotu(**config**) | _object_  
+A completely _optional_ configuration object that can be passed as an argument to the rotu constructor with following default values:  
 ```javascript
 var config = {
     "route": "/",
@@ -131,7 +130,7 @@ config.error = function(ex) {
 };
 ```
 
-# status
+# Status
 **beta**
 
 During beta rotu will be undergoing frequent changes. Updates may contain breaking changes until rotu's status has been elevated.
