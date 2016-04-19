@@ -2,18 +2,44 @@
 # [![rotu](./rotu.png)](https://www.npmjs.com/package/rotu)  
 _micro page routing for [JADE](http://jade-lang.com)_
 
-**v1.1.6**
+**v1.1.7**
+
+
+By default rotu will serve jade templates from the current working directory. By over-writing the config.route property rotu will route from url's directly to named templates.  
+
+# The Basics
 
 ```javascript
+var http = require("http");
+var rotu = require("rotu");
 
-"use strict";
+var server = http.createServer(function (req, res) {
 
-const http = require("http");
-const rotu = require("rotu");
+    var r = new rotu();
 
-let server = http.createServer(function (req, res) {
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.end(r.html());
+});
 
-    const r = new rotu();
+server.listen(8000);
+```
+
+```bash
+$ npm install rotu
+$ node app.js
+```
+
+The above _micro_ [Node.js&reg;](https://nodejs.org) application will respond to the request for [http://localhost:8000](http://localhost:8000) by looking in the current directory for a jade template named index.jade, compile the template and then serve the resultant html.
+
+Enable routing to jade template endpoints by passing the request.url to rotu's construtor. 
+
+```javascript
+var http = require("http");
+var rotu = require("rotu");
+
+var server = http.createServer(function (req, res) {
+
+    var r = new rotu({ route: req.url });
 
     res.writeHead(200, {"Content-Type": "text/html"});
     res.end(r.html());
@@ -22,12 +48,7 @@ let server = http.createServer(function (req, res) {
 server.listen(8000);
 ```
 
-See [rotu boilerplate](https://github.com/sgarver/rotu-boilerplate) for an example project.
-
-The above _micro_ [Node.js&reg;](https://nodejs.org) application will respond to the request for [http://localhost:8000](http://localhost:8000) by looking in the current directory for a jade template named index.jade, compile the template and then serve the resultant html.
-
-rotu will also route directly to named templates:
-
+For example:  
 [http://localhost:8000/home](http://localhost:8000/home)  
 routes to the **./home.jade** template
 
@@ -37,17 +58,14 @@ routes to the **./home/index.jade** template
 [http://localhost:8000/home/blog](http://localhost:8000/home/blog)  
 routes to the **./home/blog.jade** template
 
-# installation
-```bash
-$ npm install rotu
-```
+See [rotu boilerplate](https://github.com/sgarver/rotu-boilerplate) for an example starter project.
 
 # configuration
 
 let r = new rotu(**config**) | _object_  
-An _optional_ configuration object that can be passed as an argument to the rotu constructor with following default values:  
+A **_completely optional_** configuration object that can be passed as an argument to the rotu constructor with following default values:  
 ```javascript
-{
+var config = {
     "route": "/",
     "routed": null,
     "root": ".",
@@ -56,7 +74,7 @@ An _optional_ configuration object that can be passed as an argument to the rotu
         "pretty": true
     },
     "error": null
-}
+};
 ```
 
 config.**route** | _string_  
