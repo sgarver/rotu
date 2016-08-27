@@ -8,7 +8,7 @@
   },
   "main": "rotu.js",
   "dependencies": {
-    "jade": "1.11.0"
+    "jade": "1.x"
   },
   "devDependencies": {},
   "scripts": {
