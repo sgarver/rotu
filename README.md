@@ -22,13 +22,13 @@ The above _micro_ [Node.js&reg;](https://nodejs.org) application will respond to
 
 For example:  
 [http://localhost:8000/home](http://localhost:8000/home)  
-routes to the **./home.** template
+routes to the **./home.pug** template
 
 [http://localhost:8000/home/](http://localhost:8000/home/)   
-routes to the **./home/index.** template
+routes to the **./home/index.pug** template
 
 [http://localhost:8000/home/blog](http://localhost:8000/home/blog)  
-routes to the **./home/blog.** template
+routes to the **./home/blog.pug** template
 
 # Configuration
 
