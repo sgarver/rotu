@@ -1,5 +1,5 @@
 
-# [![Rotu](./Rotu.png)](https://www.npmjs.com/package/rotu)  
+# [![Rotu](./rotu.png)](https://www.npmjs.com/package/rotu)  
 _Micro page routing for [Pug](https://pugjs.org)_.
 
 **v2.0**
