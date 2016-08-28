@@ -1,6 +1,6 @@
 {
   "name": "rotu",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Micro page routing for pug",
   "repository": {
     "type": "git",
