@@ -1,6 +1,6 @@
 {
   "name": "rotu",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Micro page routing for pug",
   "repository": {
     "type": "git",
@@ -16,9 +16,9 @@
     "test": "echo \"No tests yet. Coming soon.\" && exit 0"
   },
   "keywords": [
+    "prototyping",
     "routing",
-    "jade",
-    "minimal"
+    "pug"
   ],
   "author": "sgarver <sgarver@protonmail.ch>",
   "license": "CC0-1.0"
