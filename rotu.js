@@ -1,69 +1,65 @@
 
 "use strict";
 
-const path = require("path");
+const http = require("http");
+const fs = require("fs");
 const url = require("url");
-const jade = require("jade")
+const path = require("path");
+const mime = require("mime");
+const Router = require("./router");
 
-module.exports = class rotu {
+module.exports = class Rotu {
 
     constructor(config) {
 
-        this.config = {
-            "route": "/",
-            "routed": null,
-            "root": ".",
-            "data": null,
-            "options": { "pretty": true },
-            "error": null,
-            "missing": "./404"
-        };
+        config = config || {};
 
-        if (config) {
-            Object.assign(this.config, config);
-        }
+        this.startServer(config);
     }
-    route() {
 
-        let routed = path.normalize(url.parse(this.config.route).pathname);
+    startServer(config) {
 
-        const endpoint = routed[routed.length - 1];
+        const router = new Router(config);
 
-        if (endpoint === "/" || endpoint === "\\") {
-            routed += "index";
-        }
+        let server = http.createServer( (request, response) => {
 
-        this.config.routed =  routed;
-    }
-    html() {
+            mime.default_type = "text/pug";
 
-        try {
+            const contentType = mime.lookup(request.url);
 
-            this.route();
+            if (contentType === "text/pug") {
 
-            const filename = path.basename(this.config.routed);
-            const template = jade.compileFile(this.config.root + this.config.routed + ".jade", this.config.options);
+                const html = router.getHtml(request.url);
 
-            console.log("rotu >>> " + this.config.routed);
+                response.writeHead(200, {"Content-Type": "text/html"});
+                response.end(html);
 
-            if (this.config.data) {
-                return template(this.config.data[filename].locals);
             } else {
-                return template();
+
+                const uri = url.parse(request.url).pathname;
+                const filename = path.join(process.cwd(), uri);
+
+                fs.readFile(filename, "binary", function(err, file) {
+
+                    if (err) {
+                        response.writeHead(500, {"Content-Type": "text/plain"});
+                        response.write(err + "\n");
+                        response.end();
+                        return;
+                    }
+
+                    response.writeHead(200, {"Content-Type": contentType});
+                    response.write(file, "binary");
+                    response.end();
+                });
             }
+        });
 
-        } catch (ex) {
+        const port = (config && config.port) || 8000;
 
-            if (ex.code === "ENOENT") {
-
-                const template = jade.compileFile(this.config.missing + ".jade", this.config.options);
-
-                console.log("template missing >>> " + this.config.routed);
-
-                return template();
-            }
-
-            typeof this.config.error === "function" && this.config.error(ex);
-        }
+        server.listen(port);
+        console.log(`Rotu running on port ${port}`);
     }
 }
+
+

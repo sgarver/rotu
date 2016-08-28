@@ -1,18 +1,19 @@
 {
   "name": "rotu",
-  "version": "1.1.8",
-  "description": "micro page routing for jade",
+  "version": "2.0.0",
+  "description": "Micro page routing for pug",
   "repository": {
     "type": "git",
     "url": "git://github.com/sgarver/rotu"
   },
   "main": "rotu.js",
   "dependencies": {
-    "jade": "1.x"
+    "mime": "1.3.x",
+    "pug": "^2.0.0-beta6"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests yet. Coming soon.\" && exit 0"
   },
   "keywords": [
     "routing",
