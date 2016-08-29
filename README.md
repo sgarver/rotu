@@ -13,7 +13,7 @@ const rotu = new Rotu();
 ```
 
 ```bash
-$ npm install rotu --save
+$ npm install rotu
 $ node app.js
 Rotu running on port 8000
 ```
@@ -61,7 +61,7 @@ The first descendent of data must be the  _template name_ (without the . extensi
 config.data = {
     "index": {
         "locals": {
-            "pageTitle": "Welcome to this Website",
+            "pageTitle": "Welcome",
             "youAreUsingPug": true,
             "youAreUsingRotu": true
         }
