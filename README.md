@@ -8,7 +8,7 @@ _Micro page routing for [Pug](https://pugjs.org)_.
 
 ```javascript
 // app.js
-const Rotu = require("Rotu");
+const Rotu = require("rotu");
 const rotu = new Rotu();
 ```
 
