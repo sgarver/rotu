@@ -75,7 +75,7 @@ config.data = {
 ```
 
 config.**options** | _object_  
-The standard  configuration object.  
+The standard Pug configuration object.  
 ref: https://pugjs.org
 
 ```javascript
@@ -85,7 +85,7 @@ config.options = {
 };
 ```
 config.**error**(error) | _callback method_  
-A callback method that gets called if an exception is thrown during routing or template compilation.
+A callback that runs if an exception is thrown during routing or template compilation.
 
 ```javascript
 config.error = function(error) {
