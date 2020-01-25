@@ -35,7 +35,7 @@ routes to the **./home/blog.pug** template
 const rotu = new Rotu(**config**) | _object_  
 An _optional_ configuration object that can be passed as an argument to the Rotu constructor with following default values:  
 ```javascript
-var config = {
+const config = {
     "route": "/",
     "routed": null,
     "root": ".",
